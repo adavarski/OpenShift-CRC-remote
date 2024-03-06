@@ -100,9 +100,7 @@ Browser: https://console-openshift-console.apps-crc.testing/dashboards
 
 Screenshots: 
 
-Install oc on laptop, make ssh tunnel (OPT) and oc login
-
-$ sudo ssh davar@devops -L 6443:console-openshift-console.apps-crc.testing:6443 
+Install oc CLI on laptop && oc login
 
 $ oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://devops:6443
 Login successful.
