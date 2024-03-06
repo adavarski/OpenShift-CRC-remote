@@ -1,14 +1,19 @@
 ### Setting up CodeReady Containers (CRC) on a Remote Server (ubuntu 22.04) and Remote Access to CRC (remote OpenShift 4 development environment) from Laptop
 
-#### 1. Setup OpenShift CRC on remote host (Ubuntu 22.04 LTS, IP: 192.168.1.99)
+Pre: RH account 
+
+#### 1. Setup OpenShift CRC on remote host (Ubuntu 22.04 LTS, Server IP: 192.168.1.99)
 ```
+
+### Setup sudo
+
 $ echo "$USER ALL=(ALL) NOPASSWD:ALL"|sudo tee -a /etc/sudoers
 
 ### Install packages
 
-$ sudo apt install qemu-kvm libvirt-daemon libvirt-daemon-system network-manager dnsmasq haproxy
+$ sudo apt install qemu-kvm libvirt-daemon libvirt-daemon-system network-manager haproxy
 
-### Download CRC and pull-secret in OPENSIFT directory:
+### Download CRC and pull-secret in OPENSIFT-CRC directory form RH:
 $ mkdir OPENSHIFT-CRC && cd OPENSHIFT-CRC/
 $ wget https://mirror.openshift.com/pub/openshift-v4/clients/crc/2.33.0/crc-linux-amd64.tar.xz
 $ tar -xJf ./crc-linux-amd64.tar.xz
@@ -16,7 +21,7 @@ $ tar -xJf ./crc-linux-amd64.tar.xz
 ### Place the binaries in your $PATH using .bash_profile
 $ echo "export PATH=/home/davar/OPENSHIFT/crc-linux-2.33.0-amd64:/home/davar/.crc/bin/oc:$PATH" >> ~/.bash_profile
 $ source ~/.bash_profile (or relogin)
-### Place the binaries in your $PATH PATH using .bashrc
+### Place the binaries in your $PATH using .bashrc
 $ vim ~/.bashrc
 export PATH="~/.crc/bin:$PATH"
 eval $(crc oc-env)
@@ -37,18 +42,20 @@ $ crc start
 
 ### Check CRC version and credentials
 $ crc version
-CodeReady Containers version: 1.25.0+0e5748c8
-OpenShift version: 4.7.5 (embedded in executable)
-$ crc console --credentials
+CRC version: 2.33.0+c43b17
+OpenShift version: 4.14.12
+Podman version: 4.4.4
+
+$  crc console --credentials
 To login as a regular user, run 'oc login -u developer -p developer https://api.crc.testing:6443'.
-To login as an admin, run 'oc login -u kubeadmin -p yiT2o-XfTVU-fr8ET-ahd5f https://api.crc.testing:6443'
+To login as an admin, run 'oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://api.crc.testing:6443'
 
 ### Check if CodeReady Containers work
-$ oc login -u kubeadmin -p yiT2o-XfTVU-fr8ET-ahd5f https://api.crc.testing:6443
+$oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://api.crc.testing:6443
 $ oc get nodes
 
 ### Setup HAProxy for remote CRC access 
-sudo apt install haproxy-y
+sudo apt install haproxy -y
 sudo cp /etc/haproxy/haproxy.cfg{,.bak}
 
 CRC_IP=$(crc ip)
@@ -80,7 +87,6 @@ EOF
 
 sudo systemctl enable haproxy --now
 sudo systemctl restart haproxy
-
 
 ```
 #### 2.2.Setup On the Laptop
