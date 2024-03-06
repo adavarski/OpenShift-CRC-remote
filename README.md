@@ -96,7 +96,7 @@ sudo systemctl restart haproxy
 
 Add line /etc/hosts
 
-192.168.1.99 console-openshift-console.apps-crc.testing oauth-openshift.apps-crc.testing
+192.168.1.99 devops console-openshift-console.apps-crc.testing oauth-openshift.apps-crc.testing
 
 Browser: https://console-openshift-console.apps-crc.testing/dashboards
 
