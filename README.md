@@ -89,7 +89,7 @@ sudo systemctl enable haproxy --now
 sudo systemctl restart haproxy
 
 ```
-#### 2.2.Setup On the Laptop
+#### 2.Setup On the Laptop
 
 ```
 Add line /etc/hosts
