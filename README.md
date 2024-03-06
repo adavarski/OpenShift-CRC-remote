@@ -51,7 +51,7 @@ To login as a regular user, run 'oc login -u developer -p developer https://api.
 To login as an admin, run 'oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://api.crc.testing:6443'
 
 ### Check if CodeReady Containers work
-$oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://api.crc.testing:6443
+$ oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://api.crc.testing:6443
 $ oc get nodes
 
 ### Setup HAProxy for remote CRC access 
