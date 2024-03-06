@@ -1,4 +1,4 @@
-
+```
 RC_IP=$(crc ip)
 sudo tee /etc/haproxy/haproxy.cfg &>/dev/null <<EOF
 global
@@ -49,5 +49,5 @@ Login successful.
 You have access to 67 projects, the list has been suppressed. You can list all projects with 'oc projects'
 
 Using project "default".
-
+```
 
