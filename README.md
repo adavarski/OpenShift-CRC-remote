@@ -110,5 +110,7 @@ Login successful.
 You have access to 67 projects, the list has been suppressed. You can list all projects with 'oc projects'
 
 Using project "default".
+
+oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://console-openshift-console.apps-crc.testing:6443
 ```
 
