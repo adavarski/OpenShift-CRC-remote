@@ -92,8 +92,6 @@ sudo systemctl restart haproxy
 #### 2.2.Setup On the Laptop
 
 ```
-
-
 Add line /etc/hosts
 
 192.168.1.99 devops console-openshift-console.apps-crc.testing oauth-openshift.apps-crc.testing
