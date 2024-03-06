@@ -5,7 +5,7 @@ Pre: RH account
 #### 1. Setup OpenShift CRC on remote host (Ubuntu 22.04 LTS, Server IP: 192.168.1.99)
 ```
 
-### Setup sudo
+### Setup sudoers
 
 $ echo "$USER ALL=(ALL) NOPASSWD:ALL"|sudo tee -a /etc/sudoers
 
