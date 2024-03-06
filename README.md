@@ -2,7 +2,7 @@
 
 Pre: RH account 
 
-#### 1. Setup OpenShift CRC on remote host (Ubuntu 22.04 LTS, Server IP: 192.168.1.99)
+#### 1. Setup OpenShift CRC on remote host (Ubuntu 22.04 LTS, Server IP: 192.168.1.99 devops)
 ```
 
 ### Setup sudoers
