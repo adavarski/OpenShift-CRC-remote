@@ -100,7 +100,7 @@ Browser: https://console-openshift-console.apps-crc.testing/dashboards
 
 Screenshots: 
 
-Install oc on laptop, make ssh tunnel and oc login
+Install oc on laptop, make ssh tunnel (OPT) and oc login
 
 $ sudo ssh davar@devops -L 6443:console-openshift-console.apps-crc.testing:6443 
 
@@ -111,6 +111,12 @@ You have access to 67 projects, the list has been suppressed. You can list all p
 
 Using project "default".
 
-oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://console-openshift-console.apps-crc.testing:6443
+$ oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://console-openshift-console.apps-crc.testing:6443
+Login successful.
+
+You have access to 67 projects, the list has been suppressed. You can list all projects with 'oc projects'
+
+Using project "default"
+
 ```
 
