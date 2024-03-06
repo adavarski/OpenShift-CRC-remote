@@ -1,11 +1,11 @@
-### Setting up CodeReady Containers (CRC) on a Remote Server (ubuntu 22.04) and Remote Access to CRC (remote OpenShift 4 development environment) from Laptop
+### Setting up CodeReady Containers (CRC) on a Remote Server (Ubuntu 22.04) and Remote Access to CRC (remote OpenShift4 development environment) from Laptop
 
-Pre: RH account 
+Pre: RHN account (free) 
 
-#### 1. Setup OpenShift CRC on remote host (Ubuntu 22.04 LTS, Server IP: 192.168.1.99 devops)
+#### 1. Setup OpenShift CRC on remote host (Ubuntu 22.04 LTS, Server IP: 192.168.1.99)
 ```
 
-### Setup sudoers
+### Setup sudo
 
 $ echo "$USER ALL=(ALL) NOPASSWD:ALL"|sudo tee -a /etc/sudoers
 
@@ -13,7 +13,7 @@ $ echo "$USER ALL=(ALL) NOPASSWD:ALL"|sudo tee -a /etc/sudoers
 
 $ sudo apt install qemu-kvm libvirt-daemon libvirt-daemon-system network-manager haproxy
 
-### Download CRC and pull-secret in OPENSIFT-CRC directory form RH:
+### Download CRC and pull-secret in OPENSIFT-CRC directory form RHN:
 $ mkdir OPENSHIFT-CRC && cd OPENSHIFT-CRC/
 $ wget https://mirror.openshift.com/pub/openshift-v4/clients/crc/2.33.0/crc-linux-amd64.tar.xz
 $ tar -xJf ./crc-linux-amd64.tar.xz
@@ -32,9 +32,10 @@ $ crc config set memory 12288
 $ crc config set consent-telemetry no
 $ crc config set pull-secret-file ~/OPENSHIFT/pull-secret.txt
 Successfully configured pull-secret-file to /home/davar/OPENSHIFT/pull-secret.txt
+$ crc config view
 - consent-telemetry                     : no
 - memory                                : 12288
-- pull-secret-file                      : /home/davar/OPENSHIFT/pull-secret.txt
+- pull-secret-file                      : /home/davar/OPENSHIFT-CRC/pull-secrets.txt
 
 ### Deploy CodeReady Containers virtual machine
 $ crc setup
@@ -50,7 +51,7 @@ $  crc console --credentials
 To login as a regular user, run 'oc login -u developer -p developer https://api.crc.testing:6443'.
 To login as an admin, run 'oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://api.crc.testing:6443'
 
-### Check if CodeReady Containers work
+### Check if CodeReady Containers is working
 $ oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://api.crc.testing:6443
 $ oc get nodes
 
@@ -85,9 +86,8 @@ listen api
     server crcvm $CRC_IP:6443 check
 EOF
 
-sudo systemctl enable haproxy --now
 sudo systemctl restart haproxy
-
+sudo systemctl enable haproxy
 ```
 #### 2.Setup On the Laptop
 
@@ -97,8 +97,6 @@ Add line /etc/hosts
 192.168.1.99 devops console-openshift-console.apps-crc.testing oauth-openshift.apps-crc.testing
 
 Browser: https://console-openshift-console.apps-crc.testing/dashboards
-
-Screenshots: 
 
 Install oc CLI on laptop && oc login
 
@@ -116,5 +114,6 @@ You have access to 67 projects, the list has been suppressed. You can list all p
 
 Using project "default"
 
+$ oc get po 
 ```
 
