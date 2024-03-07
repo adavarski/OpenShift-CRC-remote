@@ -100,34 +100,6 @@ Browser: https://console-openshift-console.apps-crc.testing/dashboards
 
 Install oc CLI on laptop && oc login
 
-$ oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://devops:6443
-Login successful.
-
-You have access to 67 projects, the list has been suppressed. You can list all projects with 'oc projects'
-
-Using project "default".
-
-$ cat ~/.kube/config 
-apiVersion: v1
-clusters:
-- cluster:
-    insecure-skip-tls-verify: true
-    server: https://devops:6443
-  name: devops:6443
-contexts:
-- context:
-    cluster: devops:6443
-    namespace: default
-    user: kubeadmin/devops:6443
-  name: default/devops:6443/kubeadmin
-current-context: default/devops:6443/kubeadmin
-kind: Config
-preferences: {}
-users:
-- name: kubeadmin/devops:6443
-  user:
-    token: sha256~FzDYBuXr3XOTdt52zvozJ-DsL-0H50gtV8Ff2mn6srQ
-
 $ oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://console-openshift-console.apps-crc.testing:6443
 Login successful.
 
@@ -135,6 +107,31 @@ You have access to 67 projects, the list has been suppressed. You can list all p
 
 Using project "default"
 
-$ oc get po 
+$ cat ~/.kube/config 
+apiVersion: v1
+clusters:
+- cluster:
+    insecure-skip-tls-verify: true
+    server: https://console-openshift-console.apps-crc.testing:6443
+  name: console-openshift-console-apps-crc-testing:6443
+contexts:
+- context:
+    cluster: console-openshift-console-apps-crc-testing:6443
+    namespace: default
+    user: kubeadmin/console-openshift-console-apps-crc-testing:6443
+  name: default/console-openshift-console-apps-crc-testing:6443/kubeadmin
+current-context: default/console-openshift-console-apps-crc-testing:6443/kubeadmin
+kind: Config
+preferences: {}
+users:
+- name: kubeadmin/console-openshift-console-apps-crc-testing:6443
+  user:
+    token: sha256~ht4d-DeKbHofi0uSCEuQ3WwoQmdS73s_o9AyJL7P3IE
+
+
+$ oc get po
+
+$ oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://devops:6443
+
 ```
 
