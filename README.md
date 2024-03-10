@@ -30,10 +30,12 @@ $ source ~/.bashrc
 ### Setup CRC:
 $ crc config set memory 12288
 $ crc config set consent-telemetry no
+$ crc config set disk-size 100
 $ crc config set pull-secret-file ~/OPENSHIFT/pull-secret.txt
 Successfully configured pull-secret-file to /home/davar/OPENSHIFT/pull-secret.txt
 $ crc config view
 - consent-telemetry                     : no
+- disk-size                             : 100
 - memory                                : 12288
 - pull-secret-file                      : /home/davar/OPENSHIFT-CRC/pull-secrets.txt
 
@@ -52,7 +54,7 @@ To login as a regular user, run 'oc login -u developer -p developer https://api.
 To login as an admin, run 'oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://api.crc.testing:6443'
 
 ### Check if CodeReady Containers is working
-$ oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://api.crc.testing:6443
+$ oc login -u kubeadmin -p kTJ5D-VrUDY-NEuuV-kwG5J https://api.crc.testing:6443
 $ oc get nodes
 
 ### Setup HAProxy for remote CRC access 
@@ -100,14 +102,16 @@ Browser: https://console-openshift-console.apps-crc.testing/dashboards
 
 Install oc CLI on laptop && oc login
 
-$ oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://console-openshift-console.apps-crc.testing:6443
+$ oc login -u kubeadmin -p kTJ5D-VrUDY-NEuuV-kwG5J https://console-openshift-console.apps-crc.testing:6443
 Login successful.
 
 You have access to 67 projects, the list has been suppressed. You can list all projects with 'oc projects'
 
 Using project "default"
 
-$ cat ~/.kube/config 
+Or: $ oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://devops:6443
+
+$ cat ~/.kube/config ($ oc config view)
 apiVersion: v1
 clusters:
 - cluster:
@@ -131,7 +135,6 @@ users:
 
 $ oc get po
 
-$ oc login -u kubeadmin -p VjVIZ-rDfq3-S5Ip2-4jiLU https://devops:6443
 
 ```
 
